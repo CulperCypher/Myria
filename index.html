@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myria Node Price Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .slider-container {
+            margin-bottom: 20px;
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .price-display {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Myria Node Price Calculator</h1>
+    <div class="slider-container">
+        <label for="price-slider" class="slider-label">
+            <span>Price Range</span>
+            <span id="price-value">$0.00117</span>
+        </label>
+        <input type="range" id="price-slider" min="0.001171" max="0.01668" step="0.000001" value="0.001171">
+    </div>
+    
+    <div class="price-display">
+        <p>Selected MYRIA Price: <span id="selected-price">$0.001171</span></p>
+    </div>
+    
+    <h2>Price Breakdown</h2>
+    <ul>
+        <li><strong>24h Range:</strong> $0.001992 - $0.00229</li>
+        <li><strong>7d Range:</strong> $0.001795 - $0.002303</li>
+        <li><strong>All-Time High:</strong> $0.01668 (down 87.6%)</li>
+        <li><strong>All-Time Low:</strong> $0.001171 (down 77.2%)</li>
+    </ul>
+</div>
+
+<script>
+    const priceSlider = document.getElementById("price-slider");
+    const priceValue = document.getElementById("price-value");
+    const selectedPriceDisplay = document.getElementById("selected-price");
+
+    // Update displayed price when slider changes
+    priceSlider.addEventListener("input", function() {
+        const price = parseFloat(priceSlider.value).toFixed(5);
+        priceValue.textContent = `$${price}`;
+        selectedPriceDisplay.textContent = `$${price}`;
+    });
+</script>
+
+</body>
+</html>
